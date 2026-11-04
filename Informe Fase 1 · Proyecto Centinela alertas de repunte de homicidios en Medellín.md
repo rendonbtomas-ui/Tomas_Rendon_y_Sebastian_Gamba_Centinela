@@ -1,6 +1,6 @@
 # Informe Fase 1 · Proyecto Centinela: alertas de repunte de homicidios en Medellín
 
-Nov 3, 2026 · @vane
+Nov 3, 2026
 
 ## Resumen
 
@@ -125,7 +125,7 @@ Si en el futuro se reutiliza el enfoque, deberían exigirse como mínimo verific
 - [ ] Calcular el SHA-256 de nueve archivos VNP46A3 del Anexo A, medir la latencia con compuestos recientes (2026-07 a 2026-10) y descargar los polígonos de la DAP.
 - [ ] Repetir la búsqueda de réplicas en la búsqueda interna de kaggle.com/datasets (anexo B3).
 - [ ] Confirmar el texto sobre cómo se inspeccionó el Excel en la sesión anterior (anexo C-4) y completar la Bitácora de IA.
-- [ ] Elegir cómo se publica el repositorio (privado compartido o público con script de descarga).
+
 
 ## Referencias y uso de IA
 
