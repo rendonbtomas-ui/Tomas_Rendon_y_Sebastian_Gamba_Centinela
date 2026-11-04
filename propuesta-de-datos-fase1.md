@@ -3,8 +3,18 @@
 | Campo | Detalle |
 | --- | --- |
 | Título del proyecto | Centinela Homicidios Medellín: alertas de repunte mensual con MLP |
-| Integrantes | **[Tomas Rendon - Juan Sebastian Gamba]** |
+| Integrantes | **Tomas Rendon - Juan Sebastian Gamba** |
 | Fecha | 2026-11-03 |
+| Versión | v1 (ajustes tras retroalimentación del docente) |
+
+
+# Propuesta de Datos · Proyecto Centinela · Fase 1
+
+| Campo | Detalle |
+| --- | --- |
+| Título del proyecto | Centinela Homicidios Medellín: alertas de repunte mensual con MLP |
+| Integrantes | **[COMPLETAR: nombre completo de cada integrante (máx. 3)]** |
+| Fecha  | 2026-11-03 |
 | Versión | v1 (ajustes tras retroalimentación del docente) |
 
 ## 1. Problema, cliente y objetivo binario
@@ -42,8 +52,8 @@
 - **Fuente de la serie:** únicamente el consolidado agregado de MEData (CC BY-SA 4.0), con datos hasta 2023-11 según el docente. **Se rellenan con 0 los meses sin fila** y se declara en el cuaderno.
 - **Partición cronológica por mes objetivo:** entrenamiento **2015–2020**, validación **2021–2022**, prueba **2023-01 a 2023-11**. El historial de 12 meses sale de años anteriores a 2015 de la misma serie. Escalado solo con entrenamiento; umbral de decisión solo con validación. Tamaños y prevalencia de la etiqueta, calculados con la serie pública (no con el Excel): entrenamiento 1.512 observaciones con 285 alertas (18,8 %); validación 504 con 96 (19,0 %); prueba 231 con 44 (19,0 %).
 - **Clave de alineación (agregada):** `(código de comuna/corregimiento, año-mes)`. Salvedad de fuga: la imagen del mes `m` no entra al modelo que predice `m`.
-- **Retraso de publicación:** el nombre de cada archivo VNP46A3 contiene la fecha de producción (`YYYYDDDHHMMSS`). Hasta medirla en las diez descargas del anexo A, se adopta la regla conservadora de usar para predecir `m` solo imágenes del mes `m−2` o anterior. **No he encontrado en las fuentes consultadas una cifra oficial de latencia del compuesto mensual.**
-- **Prueba de acoplamiento:** anexo A: las diez claves y los conteos de homicidio ya salen del consolidado real; **queda pendiente** descargar los diez VNP46A3 (requiere cuenta Earthdata) para registrar nombre exacto y fecha de producción.
+- **Retraso de publicación:** el nombre de cada archivo VNP46A3 contiene la fecha de producción (`YYYYDDDHHMMSS`). En los diez archivos del anexo A esa fecha cae entre 2025-05-27 y 2025-06-09 (648 a 1.577 días después del mes de la imagen): refleja un reprocesamiento de la serie histórica, no la latencia operativa. Se mantiene la regla conservadora de usar para predecir `m` solo imágenes del mes `m−2` o anterior, y queda pendiente medir la latencia con compuestos recientes. **No he encontrado en las fuentes consultadas una cifra oficial de latencia del compuesto mensual.**
+- **Prueba de acoplamiento:** anexo A: las diez claves y los conteos de homicidio ya salen del consolidado real; los diez nombres exactos de VNP46A3 y sus fechas de producción ya están registrados; **queda pendiente** el SHA-256 de nueve de los diez archivos.
 
 ## 6. Línea base comprometida
 
