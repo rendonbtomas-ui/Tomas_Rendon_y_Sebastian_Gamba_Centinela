@@ -3,9 +3,8 @@
 | Campo | Detalle |
 | --- | --- |
 | Título del proyecto | Centinela Homicidios Medellín: alertas de repunte mensual con MLP |
-| Integrantes | **[COMPLETAR: nombre completo de cada integrante (máx. 3)]** |
-| Firma de cada integrante | 1. ____________________ · 2. ____________________ · 3. ____________________ (firmas también en el anexo C) |
-| Fecha (AAAA-MM-DD) | 2026-11-03 |
+| Integrantes | **[Tomas Rendon - Juan Sebastian Gamba]** |
+| Fecha | 2026-11-03 |
 | Versión | v1 (ajustes tras retroalimentación del docente) |
 
 ## 1. Problema, cliente y objetivo binario
