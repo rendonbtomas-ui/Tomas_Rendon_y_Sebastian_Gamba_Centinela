@@ -1,6 +1,6 @@
 # Anexos de la Propuesta de Datos · Proyecto Centinela Homicidios Medellín · v1
 
-**Integrantes:** [COMPLETAR] · **Versión:** v1 · **Ejecución del cuaderno en Colab:** 2026-11-03, 21:37 (hora de Bogotá), sin errores · **Estado (2026-11-03):** lo marcado **[PENDIENTE]** es trabajo que debe ejecutar un integrante con acceso a las fuentes (cuenta Earthdata, fecha real de descarga, firmas); no son evidencias. Lo que **no** dice [PENDIENTE] se calculó con el archivo real del consolidado (23.164 filas × 4 columnas, SHA-256 en B1).
+**Integrantes:** Tomas Rendon - Juan Esteban Gamba· **Versión:** v1 · **Ejecución del cuaderno en Colab:** 2026-11-03, 21:37 (hora de Bogotá), sin errores · **Estado (2026-11-03):** lo marcado **[PENDIENTE]** es trabajo que debe ejecutar un integrante con acceso a las fuentes (cuenta Earthdata, fecha real de descarga, firmas); no son evidencias. Lo que **no** dice [PENDIENTE] se calculó con el archivo real del consolidado (23.164 filas × 4 columnas, SHA-256 en B1).
 
 ---
 
@@ -31,19 +31,6 @@
 
 *Nota:* el prefijo esperado supone que el compuesto mensual se nombra con el día del año del primer día del mes; es una suposición a confirmar con el nombre real de cada archivo. Códigos 1–16 = comunas; 50, 60, 70, 80 y 90 = corregimientos.
 
-**Cómo completar lo pendiente** (fuera del cuaderno; el token de Earthdata va en variable de entorno, nunca en el repositorio). Esquema orientativo, **ajustar tras probarlo**:
-
-```python
-import earthaccess            # pip install earthaccess; requiere cuenta Earthdata
-earthaccess.login()           # usa variables de entorno / credenciales propias
-res = earthaccess.search_data(short_name="VNP46A3",
-                              temporal=("2021-01-01", "2021-01-31"),
-                              bounding_box=(-75.8, 6.1, -75.4, 6.4))   # Medellín
-print(len(res), [r["umm"]["GranuleUR"] for r in res])   # nombre exacto del .h5
-files = earthaccess.download(res, "data/raw/vnp46a3")
-# fecha de producción = últimos 13 dígitos del nombre (YYYYDDDHHMMSS)
-# sha256 de cada archivo → anexo B1; retraso = fecha de producción − fin del mes de la imagen
-```
 
 **Declaraciones obligatorias**
 - **Retraso de publicación:** [PENDIENTE: medir en las 10 descargas, con la fecha de producción del nombre de archivo, cuántos días después del fin del mes apareció cada compuesto]. Ni la ficha NASA ni la página LAADS (2026-11-03) declaran una latencia del compuesto mensual; mientras tanto rige la regla `m−2`.
@@ -73,7 +60,7 @@ El cuaderno **no usa Drive**: lee el CSV de `data/raw/` o lo recibe por el botó
 Dos búsquedas web con operador `site:kaggle.com`: (1) `"Consolidado cantidad de casos criminalidad en comunas por año y mes" Medellín`; (2) `datasets homicidios Medellín comunas SISC`. **Resultado: sin coincidencias en kaggle.com** (los resultados fueron noticias y artículos académicos). Limitación: es búsqueda web, no la búsqueda interna de kaggle.com/datasets. **[PENDIENTE]** repetirla allí y pegar fecha y resultado.
 
 ### B4. Huella de crudeza (antes de limpiar; medida en el archivo real, celda 1 del cuaderno; las cifras se reprodujeron en la ejecución en Colab)
-- **Tamaño:** 23.164 filas × 4 columnas: `Fecha_hecho` (texto `AAAA-MM`), `Conducta`, `Codigo_comuna` (texto), `Cantidad_casos` (entero). Rango: 2003-01 a 2023-11.
+- **Tamaño:** 23.164 filas × 4 columnas: `Fecha_hecho` (texto `20261103`), `Conducta`, `Codigo_comuna` (texto), `Cantidad_casos` (entero). Rango: 2003-01 a 2023-11.
 - **Faltantes:** 0 % en las cuatro columnas. Pero el archivo **no trae filas con cero** y el territorio trae «SIN DATO» en 472 filas (ninguna de homicidio).
 - **Conductas (filas):** hurto a persona 4.525 · hurto de moto 4.513 · hurto de carro 4.084 · **homicidio 4.071** · hurto a residencia 3.497 · extorsión 2.384 · hurto de semoviente 90. Es decir, el consolidado agrega varios delitos y hay que filtrar `Conducta = Homicidio`.
 - **Códigos:** el mismo territorio aparece como `1` y `1.0` (se unifica); 16 comunas (1–16) y 5 corregimientos (50, 60, 70, 80, 90) = **21 territorios** con homicidios. Tras unificar no hay duplicados territorio-mes.
@@ -95,7 +82,7 @@ No hay espejo identificado. Contraste con el Excel: archivo distinto (ver B1).
 **Resultado:** [x] Datos agregados por la fuente oficial (sin personas identificables) · [x] Sin datos de personas · [ ] No admisible
 
 **A. Datos personales**
-- [x] Revisadas todas las columnas del CSV descargado: `Fecha_hecho` (AAAA-MM), `Conducta`, `Codigo_comuna`, `Cantidad_casos`. *(Verificado con el archivo real, SHA-256 en B1.)*
+- [x] Revisadas todas las columnas del CSV descargado: `Fecha_hecho` 20261103, `Conducta`, `Codigo_comuna`, `Cantidad_casos`. *(Verificado con el archivo real, SHA-256 en B1.)*
 - [x] No hay unidad individual: la fuente publica conteos por comuna y mes.
 - [x] Ninguna columna contiene fecha exacta (solo año-mes), barrio, edad, sexo ni coordenadas.
 
