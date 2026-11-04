@@ -10,6 +10,7 @@
 
 > **Alcance:** anticipar aumentos inusuales en el **número de homicidios registrados** por comuna/corregimiento. No identifica autores ni víctimas ni estima riesgo individual, y sus resultados no justifican actuaciones automáticas de vigilancia.
 
+## 1. Resumen
 
 | Elemento | Propuesta |
 | --- | --- |
@@ -62,7 +63,7 @@ Matriz de confusión del MLP: 16 verdaderos positivos, 28 falsos negativos, 76 f
 
 ## 5. Imagen y acoplamiento
 
-Clave agregada `(código de comuna, año-mes)`. La imagen mide **actividad (luces)**, no homicidios. Para predecir `m` se usa radiancia de `m−2` o anterior hasta medir el retraso real de publicación. La prueba de diez filas está en [ANEXOS_FASE1.md](./ANEXOS_FASE1.md) (conteos reales listos; **pendiente** descargar los VNP46A3).
+Clave agregada `(código de comuna, año-mes)`. La imagen mide **actividad (luces)**, no homicidios. Para predecir `m` se usa radiancia de `m−2` o anterior: las fechas de producción medidas (2025-05 y 2025-06) reflejan un reprocesamiento y no la latencia operativa, que sigue sin medirse. La prueba de diez filas está en [ANEXOS_FASE1.md](./ANEXOS_FASE1.md) (diez filas con conteo real, nombre exacto del VNP46A3 y fecha de producción; **pendiente** el SHA-256 de nueve archivos).
 
 ## 6. Riesgos y protección de datos
 
@@ -89,3 +90,5 @@ centinela-homicidios-medellin/
 2. NASA VIIRS Land Science Investigator-led Processing System. (2025). *VIIRS/NPP Lunar BRDF-Adjusted Nighttime Lights Monthly L3 Global 15 arc second Linear Lat Lon Grid* (Versión 2) [Conjunto de datos]. NASA LAADS DAAC. https://doi.org/10.5067/VIIRS/VNP46A3.002
 3. Departamento Administrativo de Planeación, Alcaldía de Medellín. (s. f.). *Límite político administrativo: comunas y corregimientos* [Servicio cartográfico]. https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Limite_Politico_Admtivo/MapServer/1
 4. Universidad Santo Tomás. (s. f.). *Proyecto Centinela · Fase 1* [Guía de la asignatura]. https://jotamao1985.github.io/Deep_Learning_Usta/11_Modulo_1_Actividad_Fase1_Centinela.html
+
+**Integridad académica:** la IA se usó para redactar y revisar estos documentos; sus decisiones y correcciones se registran en la Bitácora de IA. No se inventan descargas, huellas ni resultados: lo no ejecutado está marcado [PENDIENTE].
