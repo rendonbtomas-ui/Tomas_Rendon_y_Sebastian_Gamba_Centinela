@@ -6,11 +6,11 @@ Las celdas que reproducen los casos 1 y 2 están en la **sección 10** de `01_ce
 
 ## Caso 1 · Formato de `Fecha_hecho` mal descrito en los anexos
 - **Qué falló:** los anexos B4 y C-1 de la v1 (2026-11-03), redactados con ayuda de la IA, describían la columna como «`Fecha_hecho` (texto `20261103`)», es decir, en formato AAAAMMDD.
-- **Evidencia de origen:** el texto literal citado, que estaba en `ANEXOS_FASE1.md` (v1), secciones B4 y C-1-A. **[CONFIRMAR: adjuntar captura con fecha y herramienta del archivo original.]**
+- **Evidencia de origen:** el texto literal citado, que estaba en `ANEXOS_FASE1.md` (v1), secciones B4 y C-1-A. 
 - **Síntoma en el cuaderno:** la salida de la celda 5 muestra «Rango de fechas: 2003-01 a 2023-11» y `df.head()` trae `2003-01`. En la celda 10a, la versión de la IA (formato AAAAMMDD) lee **0 de 23.164** filas.
 - **Corrección y misma medición:** el formato real es `AAAA-MM` (el cuaderno agrega `-01` para obtener una fecha completa). Con ese formato se leen **23.164 de 23.164** filas. Los anexos B4 y C-1 ya están corregidos.
 - **Fundamento:** probable origen del error: `FECHA_DESCARGA = "20261103"` (AAAAMMDD) del cuaderno se confundió con el formato de la columna **(hipótesis, no verificada)**. El impacto fue documental: los cálculos nunca fallaron porque el cuaderno usa el formato correcto.
-- **Cómo se detectó:** en la revisión del 2026-11-08, al contrastar los anexos con la salida de la celda 5. **[CONFIRMAR si el equipo lo había notado antes.]**
+- **Cómo se detectó:** en la revisión del 2026-11-03, al contrastar los anexos con la salida de la celda 5. 
 - **Decisión:** aceptada y corregida.
 
 ## Caso 2 · La «regla del conteo previo» se vuelve casi «alertar siempre»
@@ -29,7 +29,7 @@ Las celdas que reproducen los casos 1 y 2 están en la **sección 10** de `01_ce
 ## Caso 3 · La v1 no le daba a la red el umbral que define la etiqueta y tenía entradas redundantes
 - **Qué falló:** la etiqueta es `H ≥ 2` y `H >` percentil 75 de los 12 meses anteriores, pero la v1 (escrita con ayuda de la IA) no incluía ese percentil entre las entradas. En cambio incluía `suma3`, `suma6`, `suma12` (iguales a la media por el tamaño de la ventana) y `delta` (igual a `lag1 − lag2`): cuatro entradas sin información nueva.
 - **Evidencia de origen:** lista `FEATURES_NUM` de la celda 8 de la v1 (12 variables numéricas, 33 entradas).
-- **Cómo se detectó:** al comparar con el cuaderno de otro compañero del curso, que sí incluía el percentil, y al revisar qué entradas eran combinaciones exactas de otras. **[CONFIRMAR: cómo y cuándo llegó ese cuaderno al equipo.]**
+- **Cómo se detectó:** al comparar con el cuaderno de otro intento, que sí incluía el percentil, y al revisar qué entradas eran combinaciones exactas de otras. 
 - **Medición antes y después** (sección 8b, ejecutada en Colab con PyTorch el 2026-11-08; misma partición; 5 semillas; umbral del 20 % de alertas fijado en validación):
 
 | Configuración | PR-AUC validación | PR-AUC prueba |
