@@ -1,7 +1,7 @@
 
 # Bitácora de uso de Inteligencia Artificial · Proyecto Centinela · Fase 1
 
-**Integrantes:** Tomás Rendón Bustamante, Juan Esteban Gamba  
+**Integrantes:** Tomás Rendón Bustamante, Juan Sebastian Gamba  
 **Fecha de la sesión:** 2026-11-03  
 **Herramienta:** Claude (Anthropic), interfaz web, una sola sesión de trabajo continuo
 
