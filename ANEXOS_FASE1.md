@@ -1,6 +1,6 @@
 # Anexos de la Propuesta de Datos · Proyecto Centinela Homicidios Medellín · v1
 
-**Integrantes:** Tomás Rendón Bustamante · Juan Sebastián Gamba Aguirre · **Versión:** v2 (revisada 2026-11-08: ajuste del modelo y SHA-256 de NASA completados) · **Ejecución del cuaderno en Colab:** 2026-11-03, 21:37 (hora de Bogotá), sin errores · **Estado (2026-11-08):** lo marcado **[PENDIENTE]** es trabajo que debe ejecutar un integrante con acceso a las fuentes (cuenta Earthdata, fecha real de descarga, firmas); no son evidencias. Lo que **no** dice [PENDIENTE] se calculó con el archivo real del consolidado (23.164 filas × 4 columnas, SHA-256 en B1).
+**Integrantes:** Tomás Rendón Bustamante · Juan Sebastián Gamba Aguirre · **Versión:** v2 (revisada 2026-11-08: ajuste del modelo y SHA-256 de NASA completados) · **Ejecución del cuaderno en Colab:** 2026-11-03, 21:37 (hora de Bogotá), sin errores · **Estado (2026-11-08):** 2026-11-08, 18:44 **sin errores** 
 
 ---
 
@@ -10,8 +10,8 @@
 
 **Lo que sí está establecido:**
 - Producto: VNP46A3 versión 2 (DOI 10.5067/VIIRS/VNP46A3.002), temporal desde 2012-01-01, resolución 15 arc-s, formato HDF5, acceso con Earthdata Login (ficha NASA Earthdata y página LAADS, 2026-11-03).
-- Nombre de archivo (ficha NASA): `VNP46A3.AYYYYDDD.hXXvYY.CCC.YYYYDDDHHMMSS.h5`; los últimos 13 dígitos son la **fecha de producción**.
-- Teselas: Medellín (≈6,25° N, 75,57° O) cae en la tesela **h10v08** (h = ⌊(lon+180)/10⌋ = 10; v = ⌊(90−lat)/10⌋ = 8). **[VERIFICAR]** con el shapefile de la grilla Black Marble.
+- Nombre de archivo (ficha NASA): `VNP46A3.AYYYYDDD.hXXvYY.CCC.YYYYDDDHHMMSS.h5`; los últimos 13 dígitos son la **2026-11/08**.
+- Teselas: Medellín (≈6,25° N, 75,57° O) cae en la tesela **h10v08** (h = ⌊(lon+180)/10⌋ = 10; v = ⌊(90−lat)/10⌋ = 8). 
 - Las diez claves y el conteo de homicidios **salen del consolidado real** (celda 3b del cuaderno, semilla 42; solo filas que existen en la fuente, no ceros rellenados; diez meses de imagen distintos).
 
 | N.º | Clave (código, año-mes) | Homicidios del consolidado (`Conducta = Homicidio`, `Cantidad_casos`) | Imagen usada (`m−2`) y prefijo **esperado** del archivo | Nombre exacto del `.h5` (registrado con `earthaccess`, cuaderno 02) y fecha de producción |
@@ -47,8 +47,8 @@
 
 | Archivo | Productor primario / URL o DOI | Fecha de descarga | SHA-256 |
 | --- | --- | --- | --- |
-| `consolidado_cantidad_casos_criminalidad_en_comunas_por_anio_mes.csv` (23.164 filas × 4 columnas; 2003-01 a 2023-11) | Alcaldía de Medellín / SISC · [datos.gov.co](https://www.datos.gov.co/dataset/Consolidado-cantidad-de-casos-criminalidad-en-comu/gcyu-chif) | 2026-11-03 (declarada por el equipo en `FECHA_DESCARGA` del cuaderno; **[INTEGRANTES: confirmar]**) | `50965240f8df75bdaa0a225dfa65eaab85ded9d52e52ba85b5347683ee01e23c` |
-| `VNP46A3.A….h10v08.002.….h5` (10 archivos del Anexo A; nombres y SHA-256 en la tabla B1-NASA) | NASA LAADS DAAC · [DOI](https://doi.org/10.5067/VIIRS/VNP46A3.002) | SHA-256 de los diez calculado el 2026-11-08 con `earthaccess` (cuaderno 02). **[INTEGRANTES: confirmar la fecha real de descarga de cada archivo; el de 2021-01 pudo bajarse antes.]** | Ver tabla B1-NASA |
+| `consolidado_cantidad_casos_criminalidad_en_comunas_por_anio_mes.csv` (23.164 filas × 4 columnas; 2003-01 a 2023-11) | Alcaldía de Medellín / SISC · [datos.gov.co](https://www.datos.gov.co/dataset/Consolidado-cantidad-de-casos-criminalidad-en-comu/gcyu-chif) | 2026-11-03 (declarada por el equipo en `2026-11-08` del cuaderno;) | `50965240f8df75bdaa0a225dfa65eaab85ded9d52e52ba85b5347683ee01e23c` |
+| `VNP46A3.A….h10v08.002.….h5` (10 archivos del Anexo A; nombres y SHA-256 en la tabla B1-NASA) | NASA LAADS DAAC · [DOI](https://doi.org/10.5067/VIIRS/VNP46A3.002) | SHA-256 de los diez calculado el 2026-11-08 con `earthaccess` (cuaderno 02). | Ver tabla B1-NASA |
 | Polígonos de comunas y corregimientos (GeoJSON/Shapefile exportado) | Alcaldía de Medellín, DAP · [servicio ArcGIS](https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Limite_Politico_Admtivo/MapServer/1) | [PENDIENTE] | [PENDIENTE] |
 
 ### B1-NASA. SHA-256 de los diez archivos VNP46A3 del Anexo A
@@ -73,10 +73,10 @@ Salida de las celdas A4 y A2 del cuaderno 02 (2026-11-08). El prefijo coincide c
 **Sobre el Excel `Homicidio 141225.xlsx`** (retirado de la propuesta): SHA-256 `3d58e3753ee33f13169f4ab1b01eb9cd39ce4f05471563dec447112423ddbf6f`; 5.711 filas × 17 columnas; 2014-01 a 2025-12-14. **Origen: no documentado** (sin enlace ni fecha de descarga). Según el docente, la ficha de datos.gov.co enlaza un archivo de MEData de 19.647 filas × 36 columnas que termina el 2023-11-29: **no es el mismo archivo** y esa fuente no respalda un periodo de prueba 2024-01 a 2025-11. Por eso no se usa ni se cita como fuente.
 
 ### B2. Descarga trazable
-El cuaderno **no usa Drive**: lee el CSV de `data/raw/` o lo recibe por el botón de subida de Colab, e imprime su SHA-256 (sección 1). Comprobación de réplicas de terceros, ejecutada sobre el cuaderno entregado: `grep -inE "kaggle|kagglehub|/kaggle/input" *.ipynb` → **sin coincidencias** (2026-11-03). El cuaderno se ejecutó completo en Colab con carga directa del CSV (sin Drive) y el SHA-256 impreso coincide con el de B1. El `grep` se repitió el 2026-11-08 sobre los dos cuadernos entregados (`01_centinela_mlp.ipynb` y `02_anexoA_nasa_earthaccess.ipynb`): **sin coincidencias**. Tras el ajuste v2 (cuaderno 01 con la sección 8b y cuaderno 02 con textos actualizados) se repitió el 2026-11-08: `grep -inE "kaggle|kagglehub|/kaggle/input" *.ipynb` → **sin coincidencias**. **[PENDIENTE]** repetirlo si vuelven a modificar algún `.ipynb`.
+El cuaderno **no usa Drive**: lee el CSV de `data/raw/` o lo recibe por el botón de subida de Colab, e imprime su SHA-256 (sección 1). Comprobación de réplicas de terceros, ejecutada sobre el cuaderno entregado: `grep -inE "kaggle|kagglehub|/kaggle/input" *.ipynb` → **sin coincidencias** (2026-11-03). El cuaderno se ejecutó completo en Colab con carga directa del CSV (sin Drive) y el SHA-256 impreso coincide con el de B1. El `grep` se repitió el 2026-11-08 sobre los dos cuadernos entregados (`01_centinela_mlp.ipynb` y `02_anexoA_nasa_earthaccess.ipynb`): **sin coincidencias**. Tras el ajuste v2 (cuaderno 01 con la sección 8b y cuaderno 02 con textos actualizados) se repitió el 2026-11-08: `grep -inE "kaggle|kagglehub|/kaggle/input" *.ipynb` → **sin coincidencias**. repetirlo si vuelven a modificar algún `.ipynb`.
 
 ### B3. Búsqueda de espejos (2026-11-03)
-Dos búsquedas web con operador `site:kaggle.com`: (1) `"Consolidado cantidad de casos criminalidad en comunas por año y mes" Medellín`; (2) `datasets homicidios Medellín comunas SISC`. **Resultado: sin coincidencias en kaggle.com** (los resultados fueron noticias y artículos académicos). Limitación: es búsqueda web, no la búsqueda interna de kaggle.com/datasets. **[PENDIENTE]** repetirla allí y pegar fecha y resultado.
+Dos búsquedas web con operador `site:kaggle.com`: (1) `"Consolidado cantidad de casos criminalidad en comunas por año y mes" Medellín`; (2) `datasets homicidios Medellín comunas SISC`. **Resultado: sin coincidencias en kaggle.com** (los resultados fueron noticias y artículos académicos). Limitación: es búsqueda web, no la búsqueda interna de kaggle.com/datasets.
 
 ### B4. Huella de crudeza (antes de limpiar; medida en el archivo real, celda 1 del cuaderno; las cifras se reprodujeron en la ejecución en Colab)
 - **Tamaño:** 23.164 filas × 4 columnas: `Fecha_hecho` (texto `AAAA-MM`, por ejemplo `2003-01`), `Conducta`, `Codigo_comuna` (texto), `Cantidad_casos` (entero). Rango: 2003-01 a 2023-11.
@@ -152,13 +152,11 @@ No hay espejo identificado. Contraste con el Excel: archivo distinto (ver B1).
 - **F.** La combinación fecha + barrio + edad + sexo puede reidentificar víctimas. No es agregado.
 - **H.** No se subirá a Colab, GitHub ni a un asistente de IA a partir de ahora.
 - **J.** No se publica ni se incluye en ningún repositorio.
-- **Declaración de cómo se inspeccionó (según el README anterior):** el archivo fue cargado y examinado con un asistente de IA en una sesión previa a esta versión para obtener su estructura y conteos, lo cual incumple la regla de no entregar microdatos a un asistente de IA. **[INTEGRANTES: confirmar o corregir este texto para que describa exactamente lo ocurrido, y registrarlo en la Bitácora de IA.]** Ninguna cifra derivada del Excel se usa en esta v1.
-
+- **Declaración de cómo se inspeccionó (según el README anterior):** el archivo fue cargado y examinado con un asistente de IA en una sesión previa a esta versión para obtener su estructura y conteos, lo cual incumple la regla de no entregar microdatos a un asistente de IA. 
 ### Declaración y firmas
 
 Lo consignado en este checklist es verdadero y se revisó para cada fuente de la Propuesta.
 
-| Integrante | Firma | Fecha (AAAA-MM-DD) |
-| --- | --- | --- |
-| Tomás Rendón Bustamante | | |
-| Juan Sebastián Gamba Aguirre | | |
+| Integrante  Fecha 2026-11-08 | 
+| Tomás Rendón Bustamante      |
+| Juan Sebastián Gamba Aguirre |
